@@ -1,0 +1,5 @@
+<App ux:AutoCtor="false">
+	<ClientPanel>
+		<Text />
+	</ClientPanel>
+</App>
