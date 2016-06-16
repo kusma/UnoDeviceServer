@@ -1,11 +1,10 @@
 {
   "RootNamespace":"",
   "Packages": [
-    "Uno.Net.Sockets",
-    "Fuse",
-    "FuseJS"
+    "Uno.Net.Sockets"
   ],
   "Includes": [
-    "*"
+    "MainView.ux.uno:Source",
+    "HostListener.uno:Source"
   ]
 }

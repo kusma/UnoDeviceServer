@@ -1,5 +1,5 @@
-<App ux:AutoCtor="false">
-	<ClientPanel>
+<Application ux:AutoCtor="false">
+<!--	<ClientPanel>
 		<Text ux:Name="_message"/>
-	</ClientPanel>
-</App>
+	</ClientPanel> -->
+</Application>
