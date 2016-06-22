@@ -32,6 +32,11 @@ public partial class MainView : Uno.Application
 		}
 	}
 
+	public override void Update()
+	{
+		PollMessages();
+	}
+
 	void PollMessages()
 	{
 		try
