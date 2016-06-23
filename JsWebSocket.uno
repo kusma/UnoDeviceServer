@@ -51,13 +51,22 @@ extern(JAVASCRIPT) class JsWebSocket
 			_readBuffer.Enqueue(data[i]);
 	}
 
+	public enum ReadyStateEnum
+	{
+		Connecting = 0,
+		Open = 1,
+		Closing = 2,
+		Closed = 3
+	}
+
+	ReadyStateEnum ReadyState { get { return (ReadyStateEnum)extern<int>(_handle) "$0.readyState"; } }
+
 	public void Send(byte[] data, int offset, int size)
 	{
 		var clone = new byte[size];
 		Array.Copy(data, offset, clone, 0, size);
 
-		var readyState = extern<int>(_handle) "$0.readyState";
-		if (readyState == 0)
+		if (ReadyState == ReadyStateEnum.Connecting)
 		{
 			// the socket is still connecting, let's just queue up the bytes
 
