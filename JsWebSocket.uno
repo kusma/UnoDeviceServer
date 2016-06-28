@@ -77,7 +77,7 @@ extern(JAVASCRIPT) class JsWebSocket
 			return;
 		}
 
-		extern(_handle, clone) "$0.send($1)";
+		extern(_handle, clone) "$0.send(new DataView($1, $2, $3))";
 	}
 
 	public void Close(int code = 1000, string reason = null)
