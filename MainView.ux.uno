@@ -6,8 +6,6 @@ using Uno.Threading;
 
 public partial class MainView : Uno.Application
 {
-	IHostConnection _hostConnection;
-
 	public MainView()
 	{
 //		InitializeUX();
@@ -15,39 +13,19 @@ public partial class MainView : Uno.Application
 		try
 		{
 			debug_log("listening for host...");
-			_hostConnection = HostConnection.Connect(1337);
+			var stream = HostConnection.Connect(1337);
 			debug_log("connected!");
 
-			var streamWriter = new StreamWriter(_hostConnection.GetStream());
+			var streamWriter = new StreamWriter(stream);
 			streamWriter.WriteLine("hello server!\n");
 			streamWriter.Flush();
+			debug_log("said hi!");
+
+			var steamReader = new StreamReader(stream);
+			var message = steamReader.ReadLine();
+			debug_log("GOT: " + message);
 
 //			UpdateManager.AddAction(PollMessages);
-
-			debug_log("said hi!");
-		}
-		catch (Exception e)
-		{
-			debug_log("error: " + e);
-		}
-	}
-
-	public override void Update()
-	{
-		PollMessages();
-	}
-
-	void PollMessages()
-	{
-		try
-		{
-			while (_hostConnection.Available > 0)
-			{
-				var steamReader = new StreamReader(_hostConnection.GetStream());
-				var message = steamReader.ReadLine();
-				debug_log("GOT: " + message);
-				// _message.Value = message;
-			}
 		}
 		catch (Exception e)
 		{
