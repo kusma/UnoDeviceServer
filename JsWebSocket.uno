@@ -2,7 +2,7 @@ using Uno;
 using Uno.Compiler.ExportTargetInterop;
 using Uno.Collections;
 
-extern(JAVASCRIPT) class JsWebSocket
+extern(JAVASCRIPT) public class JsWebSocket
 {
 	[TargetSpecificType]
 	struct WebSocketHandle
