@@ -14,7 +14,7 @@ public static class HostConnection
 		if defined(JAVASCRIPT)
 		{
 			var webSocket = new JsWebSocket("ws://localhost:" + port);
-			return WebSocketStream(webSocket);
+			return new WebSocketStream(webSocket);
 		}
 		else
 		{
