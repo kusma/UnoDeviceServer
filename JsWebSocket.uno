@@ -63,11 +63,11 @@ extern(JAVASCRIPT) class JsWebSocket
 
 	public void Send(byte[] data, int offset, int size)
 	{
-		var clone = new byte[size];
-		Array.Copy(data, offset, clone, 0, size);
-
 		if (ReadyState == ReadyStateEnum.Connecting)
 		{
+			var clone = new byte[size];
+			Array.Copy(data, offset, clone, 0, size);
+
 			// the socket is still connecting, let's just queue up the bytes
 
 			if (_writeQueue == null)
@@ -77,7 +77,7 @@ extern(JAVASCRIPT) class JsWebSocket
 			return;
 		}
 
-		extern(_handle, clone) "$0.send(new DataView($1, $2, $3))";
+		extern(_handle, data, offset, size) "$0.send(new DataView($1, $2, $3))";
 	}
 
 	public void Close(int code = 1000, string reason = null)
