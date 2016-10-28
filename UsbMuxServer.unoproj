@@ -4,7 +4,7 @@
     "Uno.Net.Sockets"
   ],
   "Includes": [
-    "HostListener.uno:Source",
+    "HostConnection.uno:Source",
     "JsWebSocket.uno:Source",
     "MainView.ux.uno:Source",
     "WebSocketStream.uno:Source"
